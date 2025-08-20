@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
-import LandingPage from './components/LandingPage'
 import Mental_health from './components/Mental_health';
 import Wellness from './components/Wellness';
 import Relationships from './components/Relationships';
@@ -20,12 +19,6 @@ const router = createBrowserRouter(
   [
     {
       path:"/",
-      element:<div>
-                  <LandingPage />
-              </div>
-    },
-    {
-      path:"/home",
       element:<div>
                   <Navbar />
                   <HeroSection />

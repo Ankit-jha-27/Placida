@@ -28,7 +28,7 @@ const MoodTracker = () => {
           How are you feeling today? Select your current mood:
         </p>
 
-        {/* Mood Buttons */}
+        
         <div className="flex flex-wrap justify-center gap-4">
           {moods.map((mood) => (
             <button

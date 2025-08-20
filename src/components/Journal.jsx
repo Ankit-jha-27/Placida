@@ -27,7 +27,7 @@ const Journal = () => {
           Daily Journal
         </h1>
 
-        {/* Title Input */}
+        
         <input
           type="text"
           placeholder="Enter Title"
@@ -36,7 +36,7 @@ const Journal = () => {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        {/* Content Textarea */}
+        
         <textarea
           placeholder="How was your day?"
           className="rounded-2xl border border-gray-700 bg-gray-700 p-4 mb-4 min-h-[300px] text-white placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
@@ -44,7 +44,7 @@ const Journal = () => {
           onChange={(e) => setValue(e.target.value)}
         />
 
-        {/* Post Button */}
+        
         <button
           onClick={createPaste}
           className="self-end bg-gradient-to-r from-teal-500 to-indigo-600 text-white px-6 py-3 rounded-2xl shadow-lg hover:scale-105 transform transition"

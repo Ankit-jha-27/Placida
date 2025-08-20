@@ -20,7 +20,7 @@ export default function NotFound() {
 
       
       <Link
-        to="/home"
+        to="/"
         className="mt-6 inline-flex items-center px-6 py-3 rounded-full bg-emerald-500 text-white font-semibold text-lg shadow-md hover:bg-emerald-600 transition duration-300"
       >
         <HomeIcon className="h-6 w-6 mr-2" />
