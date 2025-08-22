@@ -1,15 +1,25 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function FeatureCard({ title, description, icon, link, gradient }) {
+export default function FeatureCard({ title, description, icon, link }) {
   return (
     <NavLink
       to={link}
-      className={`bg-gradient-to-r ${gradient} p-6 rounded-2xl shadow-lg hover:scale-105 transition duration-200 flex flex-col items-start`}
+      className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-md 
+                 hover:-translate-y-1 transition-all duration-300 
+                 flex flex-col items-start"
     >
-      {icon}
-      <h3 className="text-xl font-semibold mt-4 mb-2 text-white">{title}</h3>
-      <p className="text-white/90 text-sm">{description}</p>
+      {/* Icon in subtle circle background */}
+      <div className="p-3 rounded-full bg-gray-100 mb-4">
+        {icon}
+      </div>
+
+      <h3 className="text-lg font-semibold mb-2 text-gray-800">
+        {title}
+      </h3>
+      <p className="text-gray-600 text-sm">
+        {description}
+      </p>
     </NavLink>
   );
 }

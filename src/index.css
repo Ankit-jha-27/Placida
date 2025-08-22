@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 body {
-  @apply bg-emerald-200 text-gray-800;
+  @apply text-gray-800;
   font-family: 'Inter', sans-serif;
+
+  /* Soft calming gradient */
+  background: linear-gradient(
+    to bottom right,
+    #f0fdfa,  /* light teal */
+    #ecfdf5,  /* mint green */
+    #fefce8   /* soft cream */
+  );
 }

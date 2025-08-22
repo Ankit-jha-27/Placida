@@ -1,5 +1,7 @@
 import React from "react";
-import { HeartPulse, Mail, Phone, Facebook, Instagram, Twitter } from "lucide-react";
+import { Mail, Phone, Facebook, Instagram, Twitter } from "lucide-react";
+import placidaLogo from "../assets/placida-logo.png";
+
 
 export default function Footer() {
   return (
@@ -9,7 +11,6 @@ export default function Footer() {
         {/* Brand + Contact */}
         <div className="bg-white/10 p-6 rounded-2xl shadow-lg">
           <div className="flex items-center space-x-3">
-            <HeartPulse className="h-8 w-8 text-white" />
             <span className="text-2xl font-bold tracking-wide">Placida</span>
           </div>
           <p className="mt-4 text-white/80 leading-relaxed">
