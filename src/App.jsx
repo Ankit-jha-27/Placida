@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import './App.css';
-
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import FeaturesSection from './components/FeaturesSection';
@@ -17,6 +16,8 @@ import Mood from './components/extraFeature/Mood';
 import Error from './components/Error';
 import Login from './components/Auth/Login';
 import SignUp from './components/Auth/SignUp';
+import Mental_health from './components/features/Mental_health';
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -89,6 +90,15 @@ function App() {
         <>
           <Navbar isLoggedIn={isLoggedIn} userEmail={username} onSignOut={handleSignOut} />
           <Wellness />
+        </>
+      ),
+    },
+    {
+      path: "/mental-health",
+      element: (
+        <>
+          <Navbar isLoggedIn={isLoggedIn} userEmail={username} onSignOut={handleSignOut} />
+          <Mental_health />
         </>
       ),
     },
