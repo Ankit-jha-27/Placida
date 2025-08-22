@@ -195,7 +195,7 @@ export default function ChatPage() {
     <div className="flex flex-col h-screen p-4 md:p-6 bg-muted">
       <div className="max-w-3xl w-full mx-auto mb-4">
         <h1 className="text-3xl font-semibold text-center text-foreground">
-          My Chatbot
+          Wellcida
         </h1>
       </div>
       <Card className="flex flex-col flex-grow max-w-3xl mx-auto w-full">

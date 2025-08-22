@@ -1,5 +1,4 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
 import {
   FaHospital,
   FaMapMarkedAlt,
@@ -8,54 +7,94 @@ import {
   FaClipboardList,
   FaCommentDots,
 } from "react-icons/fa";
-
-const features = [
-  { id: "collaborative-health-resource-hub", title: "Collaborative Health Resource Hub", icon: <FaHospital /> },
-  { id: "reporting", title: "Community Health Reporting & Mapping", icon: <FaMapMarkedAlt /> },
-  { id: "telemedicine", title: "Telemedicine & Virtual Consultation", icon: <FaVideo /> },
-  { id: "wellness", title: "Preventive Healthcare & Wellness Education", icon: <FaHeartbeat /> },
-  { id: "tracker", title: "Health Campaign & Program Tracker", icon: <FaClipboardList /> },
-  { id: "feedback", title: "Feedback & Referral Loop", icon: <FaCommentDots /> },
-];
+import FeatureCard from "./FeatureCard";
 
 export default function Features() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
+  const features = [
+    {
+      title: "Collaborative Health Resource Hub",
+      icon: <FaHospital />,
+      description: "A shared hub for community health resources.",
+      link: "/features/collaborative-health-resource-hub",
+    },
+    {
+      title: "Community Health Reporting & Mapping",
+      icon: <FaMapMarkedAlt />,
+      description: "Report and view health data on an interactive map.",
+      link: "/features/reporting",
+    },
+    {
+      title: "Telemedicine & Virtual Consultation",
+      icon: <FaVideo />,
+      description: "Access healthcare professionals remotely.",
+      link: "/features/telemedicine",
+    },
+    {
+      title: "Preventive Healthcare & Wellness Education",
+      icon: <FaHeartbeat />,
+      description: "Learn about wellness and preventive care.",
+      link: "/features/wellness",
+    },
+    {
+      title: "Health Campaign & Program Tracker",
+      icon: <FaClipboardList />,
+      description: "Track health initiatives in your area.",
+      link: "/features/tracker",
+    },
+    {
+      title: "Wellcida ChatBot",
+      icon: <FaCommentDots />,
+      description: "Your AI health & wellness assistant.",
+      link: "#",
+      onClick: () => setIsChatOpen(true), // Open chatbot
+    },
+  ];
+
   return (
     <section className="py-20 px-6 md:px-20 bg-gray-50">
-      
       {/* Section Heading */}
-      <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-16 tracking-wide leading-tight text-gray-800">
-        Discover What{" "}
-        <span className="text-emerald-600">
-          Placida
-        </span>{" "}
-        Offers You
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 tracking-wide leading-snug text-gray-800">
+        Discover What <span className="text-emerald-600">Placida</span> Offers You
       </h2>
 
-      {/* Features Flex Layout */}
+      {/* Features Grid */}
       <div className="flex flex-wrap justify-center gap-8">
-        {features.map((feature) => (
-          <NavLink
-            to={`/features/${feature.id}`}
-            key={feature.id}
-            className={({ isActive }) =>
-              `flex flex-col items-center justify-center w-full sm:w-[45%] lg:w-[30%] min-h-[220px] 
-               p-6 rounded-2xl border border-gray-200 bg-white shadow-sm 
-               transition-all duration-300 transform hover:scale-105 hover:shadow-md 
-               ${isActive ? "ring-2 ring-emerald-400" : ""}`
-            }
+        {features.map((feature, idx) => (
+          <div
+            key={idx}
+            onClick={feature.onClick ? feature.onClick : undefined}
+            className={feature.onClick ? "cursor-pointer transition-transform hover:scale-105" : ""}
           >
-            <div className="text-5xl mb-4 text-emerald-600">
-              {feature.icon}
-            </div>
-            <h3 className="text-lg font-semibold tracking-tight text-center mb-3 text-gray-800">
-              {feature.title}
-            </h3>
-            <p className="text-sm text-gray-500 text-center">
-              Learn more →
-            </p>
-          </NavLink>
+            <FeatureCard
+              title={feature.title}
+              description={feature.description}
+              icon={feature.icon}
+              link={feature.link}
+            />
+          </div>
         ))}
       </div>
+
+      {/* Chatbot Popup */}
+      {isChatOpen && (
+        <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+          <div className="bg-white rounded-2xl w-[600px] h-[600px] shadow-2xl relative overflow-hidden transform scale-95 transition-all duration-300 ease-out">
+            <button
+              className="absolute top-3 right-3 text-gray-500 hover:text-red-500 text-lg font-bold z-10"
+              onClick={() => setIsChatOpen(false)}
+            >
+              ✖
+            </button>
+            <iframe
+              src="http://localhost:3000"
+              className="w-full h-full border-none rounded-2xl"
+              title="Wellcida ChatBot"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
