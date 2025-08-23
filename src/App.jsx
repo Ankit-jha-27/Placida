@@ -12,8 +12,6 @@ import Features from "./components/Features";
 import Wellness from "./components/features/Wellness";
 import Relationships from "./components/features/Relationships";
 import Meditation from "./components/features/Meditation";
-import Journal from "./components/extraFeature/Journal";
-import Mood from "./components/extraFeature/Mood";
 import Error from "./components/Error";
 import Login from "./components/Auth/Login";
 import SignUp from "./components/Auth/SignUp";
@@ -24,15 +22,12 @@ import Contact from "./Contact";
 import BreathingGame from "./games/BreathingGame";
 import WordAssociationGame from "./games/WordAssociationGame";
 import ColorMatchGame from "./games/ColorMatchGame";
+import JournalDashboard from "./components/JournalDashboard";
 
 function LayoutWithFooter({ children, isLoggedIn, username, handleSignOut }) {
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar
-        isLoggedIn={isLoggedIn}
-        userEmail={username}
-        onSignOut={handleSignOut}
-      />
+      <Navbar isLoggedIn={isLoggedIn} userEmail={username} onSignOut={handleSignOut} />
       <main className="flex-grow pt-20">{children}</main>
       <Footer />
     </div>
@@ -86,25 +81,13 @@ function App() {
         </LayoutWithFooter>
       ),
     },
-    {
-      path: "/login",
-      element: (
-        <Login
-          handleLogin={handleLogin}
-          onLoginSuccess={(uname) => setUsername(uname)}
-        />
-      ),
-    },
+    { path: "/login", element: <Login handleLogin={handleLogin} onLoginSuccess={(uname) => setUsername(uname)} /> },
     { path: "/signUp", element: <SignUp /> },
 
     {
       path: "/features",
       element: (
-        <LayoutWithFooter
-          isLoggedIn={isLoggedIn}
-          username={username}
-          handleSignOut={handleSignOut}
-        >
+        <LayoutWithFooter isLoggedIn={isLoggedIn} username={username} handleSignOut={handleSignOut}>
           <Features />
         </LayoutWithFooter>
       ),
@@ -112,11 +95,7 @@ function App() {
     {
       path: "/wellness",
       element: (
-        <LayoutWithFooter
-          isLoggedIn={isLoggedIn}
-          username={username}
-          handleSignOut={handleSignOut}
-        >
+        <LayoutWithFooter isLoggedIn={isLoggedIn} username={username} handleSignOut={handleSignOut}>
           <Outlet />
         </LayoutWithFooter>
       ),
@@ -130,11 +109,7 @@ function App() {
     {
       path: "/mental-health",
       element: (
-        <LayoutWithFooter
-          isLoggedIn={isLoggedIn}
-          username={username}
-          handleSignOut={handleSignOut}
-        >
+        <LayoutWithFooter isLoggedIn={isLoggedIn} username={username} handleSignOut={handleSignOut}>
           <Mental_health />
         </LayoutWithFooter>
       ),
@@ -142,11 +117,7 @@ function App() {
     {
       path: "/relationships",
       element: (
-        <LayoutWithFooter
-          isLoggedIn={isLoggedIn}
-          username={username}
-          handleSignOut={handleSignOut}
-        >
+        <LayoutWithFooter isLoggedIn={isLoggedIn} username={username} handleSignOut={handleSignOut}>
           <Relationships />
         </LayoutWithFooter>
       ),
@@ -154,11 +125,7 @@ function App() {
     {
       path: "/about",
       element: (
-        <LayoutWithFooter
-          isLoggedIn={isLoggedIn}
-          username={username}
-          handleSignOut={handleSignOut}
-        >
+        <LayoutWithFooter isLoggedIn={isLoggedIn} username={username} handleSignOut={handleSignOut}>
           <About />
         </LayoutWithFooter>
       ),
@@ -166,11 +133,7 @@ function App() {
     {
       path: "/contact",
       element: (
-        <LayoutWithFooter
-          isLoggedIn={isLoggedIn}
-          username={username}
-          handleSignOut={handleSignOut}
-        >
+        <LayoutWithFooter isLoggedIn={isLoggedIn} username={username} handleSignOut={handleSignOut}>
           <Contact />
         </LayoutWithFooter>
       ),
@@ -178,36 +141,20 @@ function App() {
     {
       path: "/meditation",
       element: (
-        <LayoutWithFooter
-          isLoggedIn={isLoggedIn}
-          username={username}
-          handleSignOut={handleSignOut}
-        >
+        <LayoutWithFooter isLoggedIn={isLoggedIn} username={username} handleSignOut={handleSignOut}>
           <Meditation />
         </LayoutWithFooter>
       ),
     },
     {
-      path: "/journal",
+      path: "/dashboard",
       element: (
         <LayoutWithFooter
           isLoggedIn={isLoggedIn}
           username={username}
           handleSignOut={handleSignOut}
         >
-          <Journal />
-        </LayoutWithFooter>
-      ),
-    },
-    {
-      path: "/mood",
-      element: (
-        <LayoutWithFooter
-          isLoggedIn={isLoggedIn}
-          username={username}
-          handleSignOut={handleSignOut}
-        >
-          <Mood />
+          <JournalDashboard />
         </LayoutWithFooter>
       ),
     },

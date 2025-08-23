@@ -47,40 +47,40 @@ export default function HeroSection() {
 
         {/* Right Section: Cards */}
         <div className="grid gap-6 w-full md:w-[350px]">
-          {/* Mood Tracker Card */}
+          {/* Dashboard Link Card */}
           <motion.article
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <NavLink
-              to="/mood"
+              to="/dashboard"
               className="bg-gradient-to-r from-emerald-300 to-teal-400 p-6 rounded-3xl border border-white
                          cursor-pointer hover:scale-105 transition-transform duration-300 
                          shadow-xl hover:shadow-emerald-400/60 block"
             >
-              <h2 className="text-xl font-semibold mb-2 text-black">😊 Mood Tracker</h2>
+              <h2 className="text-xl font-semibold mb-2 text-black">📊 Dashboard</h2>
               <p className="text-sm text-black">
-                Understand and reflect on your daily emotions.
+                Track your mood and journal entries in one place.
               </p>
             </NavLink>
           </motion.article>
 
-          {/* Journal Card */}
+          {/* Other Feature Cards */}
           <motion.article
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
             <NavLink
-              to="/journal"
+              to="/features"
               className="bg-gradient-to-r from-purple-300 to-violet-400 p-6 rounded-3xl border border-white
                          cursor-pointer hover:scale-105 transition-transform duration-300 
                          shadow-xl hover:shadow-purple-400/60 block"
             >
-              <h2 className="text-xl font-semibold mb-2 text-black">📖 Journal</h2>
+              <h2 className="text-xl font-semibold mb-2 text-black">✨ Features</h2>
               <p className="text-sm text-black">
-                Write, release, and find clarity in your thoughts.
+                Explore wellness, meditation, and relationship tools.
               </p>
             </NavLink>
           </motion.article>
