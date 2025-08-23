@@ -18,7 +18,7 @@ const MoodTracker = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center px-4">
+    <div className="min-h-screen -mt-16 bg-gray-900 text-white flex items-center justify-center px-4">
       <div className="max-w-3xl w-full bg-gray-800 rounded-3xl shadow-2xl p-8 flex flex-col items-center">
         <h1 className="text-3xl font-bold mb-6 text-teal-400 text-center">
           Mood Tracker
@@ -28,7 +28,6 @@ const MoodTracker = () => {
           How are you feeling today? Select your current mood:
         </p>
 
-        
         <div className="flex flex-wrap justify-center gap-4">
           {moods.map((mood) => (
             <button

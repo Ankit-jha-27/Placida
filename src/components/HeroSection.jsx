@@ -9,9 +9,9 @@ export default function HeroSection() {
   useEffect(() => {
     const typed = new Typed(typedRef.current, {
       strings: [
-        '<span class="text-black">You are stronger than you feel</span>',
-        '<span class="text-black">Healing starts with small steps</span>',
-        '<span class="text-black">Your feelings are valid</span>'
+        '<span class="bg-gradient-to-r from-blue-700 to-emerald-600 bg-clip-text text-transparent">You are stronger than you feel</span>',
+        '<span class="bg-gradient-to-r from-blue-700 to-emerald-600 bg-clip-text text-transparent">Healing starts with small steps</span>',
+        '<span class="bg-gradient-to-r from-blue-700 to-emerald-600 bg-clip-text text-transparent">Your feelings are valid</span>'
       ],
       typeSpeed: 60,
       backSpeed: 0,
@@ -26,8 +26,8 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-screen h-[90vh] flex items-center px-8 bg-gradient-to-br from-sky-100 via-blue-200 to-emerald-100 overflow-hidden">
-
+    <section className="relative w-screen min-h-screen -mt-20 flex items-center px-8 bg-gradient-to-br from-sky-100 via-blue-200 to-emerald-100 overflow-hidden">
+      
       {/* Soft overlay */}
       <div className="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
 
@@ -40,7 +40,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <h1 className="text-3xl md:text-5xl font-semibold mb-4 leading-snug text-black drop-shadow-sm">
+          <h1 className="text-3xl md:text-5xl font-semibold mb-4 leading-snug drop-shadow-sm">
             <span ref={typedRef}></span>
           </h1>
         </motion.header>

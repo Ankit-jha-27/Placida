@@ -1,50 +1,91 @@
-import React from "react";
+import React, { useState } from 'react';
+import YouTube from 'react-youtube';
+import toast, { Toaster } from 'react-hot-toast';
 
-const Mental_health = () => {
+const videoLinks = [
+  { id: '149tYQEhqvY', title: '15 Minute Guided Meditation to Release Suppressed Emotions' },
+  { id: 'zODzQ5K-Da8', title: 'Kundalini Yoga for Emotional and Mental Balance' },
+  { id: 'hUeeZf-Cfps', title: 'How to Achieve Emotional Balance | Jack Canfield' },
+  { id: 'QHkXvPq2pQE', title: 'Reset: Decompress Your Body and Mind' },
+  { id: 'LiUnFJ8P4gM', title: '4-7-8 Calm Breathing Exercise | 10 Minutes of Deep Relaxation' },
+  { id: '4lZ2xTpNiqE', title: 'How to Stay Calm When Emotions Run Wild: Emotional Regulation Tips' },
+];
+
+const MentalHealth = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [timeLeft, setTimeLeft] = useState({});
+
+  const handleVideoClick = (title) => toast.success(`Enjoy watching: ${title}`);
+
+  const onPlayerReady = (event, id) => {
+    const player = event.target;
+    const updateTime = () => {
+      const duration = player.getDuration();
+      const currentTime = player.getCurrentTime();
+      const remaining = Math.max(duration - currentTime, 0);
+      setTimeLeft((prev) => ({ ...prev, [id]: Math.floor(remaining) }));
+    };
+    setInterval(updateTime, 1000);
+  };
+
+  const filteredVideos = videoLinks.filter(({ title }) =>
+    title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-8 flex flex-col items-center">
+    <div className="min-h-screen -mt-16 bg-gradient-to-b from-blue-100 to-white px-6 flex flex-col items-center">
+      <Toaster position="top-center" reverseOrder={false} />
+
       {/* Header */}
-      <header className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-blue-700 mb-2">
-          Mental Health
+      <header className="mb-6 text-center mt-8">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-blue-800 mb-4">
+          🌿 Mental Health Resources
         </h1>
-        <p className="text-gray-600 text-lg">
-          Gentle guidance and resources for emotional balance.
+        <p className="text-gray-700 max-w-xl mx-auto text-lg">
+          Explore calming sessions to support your well-being. Breathe deeply, take your time, and remember—you’re not alone.
         </p>
       </header>
 
-      {/* Resource Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
-        <div className="bg-white shadow-md rounded-2xl p-6 hover:shadow-lg transition duration-300">
-          <h2 className="text-xl font-semibold text-blue-600 mb-2">Mindfulness</h2>
-          <p className="text-gray-700">
-            Simple exercises to stay present and reduce stress.
-          </p>
-        </div>
-
-        <div className="bg-white shadow-md rounded-2xl p-6 hover:shadow-lg transition duration-300">
-          <h2 className="text-xl font-semibold text-blue-600 mb-2">Therapy Resources</h2>
-          <p className="text-gray-700">
-            Find online counseling and local mental health professionals.
-          </p>
-        </div>
-
-        <div className="bg-white shadow-md rounded-2xl p-6 hover:shadow-lg transition duration-300">
-          <h2 className="text-xl font-semibold text-blue-600 mb-2">Support Communities</h2>
-          <p className="text-gray-700">
-            Connect with groups and communities that understand you.
-          </p>
-        </div>
+      {/* Search Bar */}
+      <div className="mb-10 w-full max-w-md">
+        <input
+          type="text"
+          placeholder="Search videos..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full px-4 py-2 border border-blue-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
       </div>
 
-      {/* Call to Action */}
-      <div className="mt-10 text-center">
-        <button className="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition duration-300">
-          Learn More
-        </button>
-      </div>
+      {/* Video Grid */}
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-6xl">
+        {filteredVideos.map(({ id, title }) => (
+          <div
+            key={id}
+            className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+            onClick={() => handleVideoClick(title)}
+          >
+            <YouTube
+              videoId={id}
+              opts={{ width: '100%', height: '200', playerVars: { modestbranding: 1, rel: 0, controls: 1 } }}
+              onReady={(event) => onPlayerReady(event, id)}
+            />
+            <div className="p-4 bg-blue-50 flex justify-between items-center">
+              <h3 className="text-md font-semibold text-blue-700">{title}</h3>
+              {timeLeft[id] !== undefined && (
+                <span className="text-sm text-gray-600">{timeLeft[id]}s left</span>
+              )}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* Footer */}
+      <footer className="mt-16 text-center text-gray-500 text-sm">
+        <p>If you're struggling, please reach out to a mental health professional. You matter 💙</p>
+      </footer>
     </div>
   );
 };
 
-export default Mental_health;
+export default MentalHealth;

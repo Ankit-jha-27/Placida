@@ -17,8 +17,8 @@ export default function FeaturesSection() {
       link: "/mental-health",
     },
     {
-      title: "Wellness",
-      description: "Daily habits and self-care tips for a healthier you.",
+      title: "Wellness Gamification",
+      description: "Fun games and activities to boost your mental well-being every day",
       icon: <SparklesIcon className="h-10 w-10 text-indigo-600" />,
       link: "/wellness",
     },
