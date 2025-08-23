@@ -18,17 +18,17 @@ export default function Footer() {
             Building connections, awareness, and support for a healthier tomorrow.
           </p>
 
-          {/* Contact Info */}
+          
           <div className="mt-6 space-y-2 text-white/80">
             <p className="flex items-center gap-2">
               <Mail className="h-5 w-5" /> support@placida.com
             </p>
             <p className="flex items-center gap-2">
-              <Phone className="h-5 w-5" /> +91 98765 43210
+              <Phone className="h-5 w-5" /> +XYZ
             </p>
           </div>
 
-          {/* Social Links */}
+          
           <div className="flex space-x-4 mt-4">
             <a href="#" className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition">
               <Facebook className="h-5 w-5" />
@@ -42,7 +42,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Quick Links */}
+        
         <div className="bg-white/10 p-6 rounded-2xl shadow-lg">
           <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
           <ul className="space-y-2 text-white/90">
@@ -54,7 +54,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Newsletter */}
+       
         <div className="bg-white/10 p-6 rounded-2xl shadow-lg">
           <h3 className="text-lg font-semibold mb-4">Stay Updated</h3>
           <p className="text-white/80 mb-4">
@@ -76,7 +76,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Section */}
+      
       <div className="mt-10 text-center text-white/70 text-sm">
         © {new Date().getFullYear()} Placida. All rights reserved.
       </div>

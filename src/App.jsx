@@ -12,17 +12,18 @@ import Features from "./components/Features";
 import Wellness from "./components/features/Wellness";
 import Relationships from "./components/features/Relationships";
 import Meditation from "./components/features/Meditation";
-import Error from "./components/Error";
-import Login from "./components/Auth/Login";
-import SignUp from "./components/Auth/SignUp";
 import Mental_health from "./components/features/Mental_health";
+import HealthReport from "./components/coreFeatures/HealthReport";
 import About from "./components/About";
 import Contact from "./Contact";
-
 import BreathingGame from "./games/BreathingGame";
 import WordAssociationGame from "./games/WordAssociationGame";
 import ColorMatchGame from "./games/ColorMatchGame";
 import JournalDashboard from "./components/JournalDashboard";
+import TelemedicineAndVirtual from "./components/coreFeatures/TelemedicineAndVirtual";
+import Error from "./components/Error";
+import Login from "./components/Auth/Login";
+import SignUp from "./components/Auth/SignUp";
 
 function LayoutWithFooter({ children, isLoggedIn, username, handleSignOut }) {
   return (
@@ -83,7 +84,6 @@ function App() {
     },
     { path: "/login", element: <Login handleLogin={handleLogin} onLoginSuccess={(uname) => setUsername(uname)} /> },
     { path: "/signUp", element: <SignUp /> },
-
     {
       path: "/features",
       element: (
@@ -104,7 +104,16 @@ function App() {
         { path: "breathing", element: <BreathingGame /> },
         { path: "color-match", element: <ColorMatchGame /> },
         { path: "word-association", element: <WordAssociationGame /> },
+        { path: "health-report", element: <HealthReport /> }, // Nested route
       ],
+    },
+    {
+      path: "/health-report", // Direct route
+      element: (
+        <LayoutWithFooter isLoggedIn={isLoggedIn} username={username} handleSignOut={handleSignOut}>
+          <HealthReport />
+        </LayoutWithFooter>
+      ),
     },
     {
       path: "/mental-health",
@@ -155,6 +164,18 @@ function App() {
           handleSignOut={handleSignOut}
         >
           <JournalDashboard />
+        </LayoutWithFooter>
+      ),
+    },
+    {
+      path: "/telemedicine-virtual",
+      element: (
+        <LayoutWithFooter
+          isLoggedIn={isLoggedIn}
+          username={username}
+          handleSignOut={handleSignOut}
+        >
+          <TelemedicineAndVirtual />
         </LayoutWithFooter>
       ),
     },

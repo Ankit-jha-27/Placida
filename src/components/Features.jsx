@@ -79,7 +79,7 @@ export default function Features() {
       title: "Telemedicine & Virtual Consultation",
       icon: <FaVideo />,
       description: "Access healthcare professionals remotely.",
-      link: "/features/telemedicine",
+      link: "/telemedicine-virtual",
     },
     {
       title: "Preventive Healthcare & Wellness Education",
@@ -91,7 +91,7 @@ export default function Features() {
       title: "Health Campaign & Program Tracker",
       icon: <FaClipboardList />,
       description: "Track health initiatives in your area.",
-      link: "/features/tracker",
+      link: "/health-report",
     },
     {
       title: "Wellcida ChatBot",
